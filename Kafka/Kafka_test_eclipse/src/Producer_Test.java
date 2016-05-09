@@ -36,7 +36,7 @@ public class Producer_Test extends Thread{
 
         Producer<String, String> producer = new KafkaProducer<>(props);
         for(int i = 0; i < 10000; i++) {
-            producer.send(new ProducerRecord<String, String>("topic-2", UUID.randomUUID().toString(), UUID.randomUUID().toString()));
+            producer.send(new ProducerRecord<String, String>("top1", UUID.randomUUID().toString(), UUID.randomUUID().toString()));
         }
 
         producer.close();
