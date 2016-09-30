@@ -1,0 +1,11 @@
+How to use?
+
+1. generate a sample file with followed path :/tmp/plain-text.txt
+2. run TestBCOpenPGP.java
+
+There are three functions with this utils.
+
+* genKeyPair()
+* encrypt()
+* decrypt()
+
