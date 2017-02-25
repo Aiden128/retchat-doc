@@ -55,7 +55,14 @@ public final class JavaKafkaWordCount {
 		
 
 		StreamingExamples.setStreamingLogLevels();
-		SparkConf sparkConf = new SparkConf().setAppName(APPNAME).setMaster(SPARK_MASTER);
+		SparkConf sparkConf = new SparkConf();
+		sparkConf.set("spark.cores.max", "3")
+		sparkConf.set("spark.kryoserializer.buffer.mb","32");
+		sparkConf.set("spark.shuffle.file.buffer.kb","64");
+		sparkConf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer");
+		sparkConf.set("spark.kryo.registrator", "org.apache.spark.serializer.KryoRegistrator");
+		sparkConf.setAppName(APPNAME).setMaster(SPARK_MASTER);
+
 		// Create the context with 2 seconds batch size
 		JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2000));
 
